@@ -1,0 +1,81 @@
+//project setup 
+*create nextjs project
+*install shdacn as ui library
+
+//Auth js setup
+*step-1
+npm install next-auth@beta 
+*step-2
+npx auth secret  
+*step-3 // make auth.ts file in root of folder
+import NextAuth from "next-auth"
+ 
+export const { handlers, signIn, signOut, auth } = NextAuth({
+  providers: [],
+});
+
+*step-5
+/app/api/auth/[...nextauth]/route.ts.
+
+//? Now move to authentiation
+*we have multiple options in authentication:
+1)OAuth
+2)Magic Links
+3)creadebtials
+4)web authn
+
+// we are using OAuth for github authentication so we follow steps;;
+
+*step-6
+go to github/profile/settings/developer-settings/OAuth apps
+*create  new oAuth on githubg and give :
+name, url link like https://localhost:3000, Authorization callback url https://localhost:3000/api/auth/callback/github
+
+*step-7 
+now copy client-secret and id from auth.js and github se paste krdo
+
+// then update the auth.ts like this
+
+import NextAuth from "next-auth"
+import GitHub from "next-auth/providers/github"
+ 
+export const { handlers, signIn, signOut, auth } = NextAuth({
+  providers: [GitHub], // add github as provider
+});
+
+// documentation me dekho auth.js / githubg ki usme hame SignIn add krna hai ab to form ke anadar button ko wrap karke action provide krege
+
+// now we are done with authentication of github now we are login and we get the session ok
+
+
+//for theme mode we use shadcn dark mode 
+
+
+//done with ui of sidebar, header, and home page
+
+//firebase setup;;
+
+goto firebase.com and create new project // My-gpt
+//goto build => firebase databse => create databse using test mode
+
+// goto project settings and register your app to get code snippte and keys
+// now create firebase.ts in utils
+*npm install firebase
+*npm install @firebase/firestore
+
+do this for initialization and acces to databse ;;;
+
+# import {getFirestore} from '@firebase/firestore'
+# import { getApp, getApps, initializeApp } from "firebase/app";
+# const firebaseConfig = {
+#   apiKey: "AIzaSyDa2uQD7Fw6v1aYxLGDGgR8scls38vqv_8",
+#   authDomain: "my-gpt-24477.firebaseapp.com",
+#   projectId: "my-gpt-24477",
+#   storageBucket: "my-gpt-24477.firebasestorage.app",
+#   messagingSenderId: "802744485426",
+#   appId: "1:802744485426:web:43ba81f5621f14c3fede2b"
+# };
+
+# const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+# const db = getFirestore(app);
+# export {db};
