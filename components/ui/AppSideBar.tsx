@@ -17,7 +17,7 @@ const AppSideBar = async () => {
         <SidebarHeader>
             <SidebarMenu>
                 <SidebarMenuItem>
-                   <NewChat/>
+                   <NewChat user={user}/>
                 </SidebarMenuItem>
             </SidebarMenu>
         </SidebarHeader>

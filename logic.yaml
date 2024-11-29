@@ -79,3 +79,58 @@ do this for initialization and acces to databse ;;;
 # const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 # const db = getFirestore(app);
 # export {db};
+
+
+//  now we add document to firebase databse using this server action
+
+const doc = await addDoc(collection(db, "collectionName", user.email or id, "simply name of doc like chats"), {
+  name: user.name,
+  email: user.email,
+  createdAt: new Date(),
+  lastMessage: "",
+  lastMessageTime: null,
+  lastMessageSender: null,
+  etc.......
+});
+
+
+xai-UnB8QI5BF5rqDH6ff3JyDFVJRAaPcOdj0VdnVXqiDp55cutqv9rucrckE7Fbyfr6JtFjOGcxI3anbdsP
+
+
+// now we login to xapi and the eky from there
+
+//build the route.ts
+app/api/chat/route.ts
+
+as well as created the xai.ts file in lib folder also;
+and doing==>>> npm i openai
+
+in an xai.ts file we just setup the api url and apikey 
+
+//* now in route.ts file we setup the whole scene of getting input from user and give response to them using xai api;
+
+*firebaseAdminSetup
+//now we go to firebase console => project settings usme se vo generate key per se ek json file download hogi usko root me paset krlo or rename krolo
+
+*ye screte file hai isko .gitIgnore m add krna na bhulee
+
+// now goto textfixer.com for line removes of account key PASET the json file code their and get new code from there and goto .env.local and make 
+firebase-accountadmin-key and paste here
+
+//makeing file firebaseAdmin.ts and doing 
+ npm i firebase-admin
+
+**ye pura firebase admin ka dubara seekhna padega**
+
+after setting the adminDatabase we just set all data to it and send next response 
+
+ await adminDB
+    .collection("users")
+    .doc(user.email)
+    .collection("chats")
+    .doc(chatId)
+    .collection("messages")
+    .add(message);
+
+
+    return NextResponse.json({answer: message.text}, {status:200});
