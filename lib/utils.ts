@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
-}
+};
 
 
 export const cards = [
@@ -26,4 +26,4 @@ export const cards = [
     title:'Yet Another Card',
     description: 'This is yet another card',
   },
-]
+];
