@@ -44,4 +44,4 @@ export async function POST(request: Request){
 
     console.log(message.text)
     return NextResponse.json({answer: message.text}, {status:200});
-}
+};
